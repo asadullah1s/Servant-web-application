@@ -1,1 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home & Office Staffing Platform</title>
 
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========================================= -->
+    <!-- NAVBAR -->
+    <!-- ========================================= -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-hands-helping me-2 text-primary"></i>
+                <span data-i18n="brand">Staffing Platform</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link active" href="#" data-i18n="nav_home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-i18n="nav_services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-i18n="nav_workers">Find Workers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-i18n="nav_about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-i18n="nav_contact">Contact</a></li>
+                    
+                    <!-- Language Switcher -->
+                    <li class="nav-item dropdown ms-2">
+                        <a class="nav-link dropdown-toggle lang-btn" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe"></i> <span id="current-lang-label">EN</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
+                            <li><a class="dropdown-item" data-lang="en" href="#">🇬🇧 English</a></li>
+                            <li><a class="dropdown-item" data-lang="ur" href="#">🇵🇰 اردو</a></li>
+                            <li><a class="dropdown-item" data-lang="ps" href="#">🇦🇫 پښتو</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Auth Buttons -->
+                    <li class="nav-item ms-2">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-1" data-i18n="login">Login</a>
+                        <a href="#" class="btn btn-primary btn-sm" data-i18n="register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================= -->
+    <!-- HERO SECTION -->
+    <!-- ========================================= -->
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <h1 class="hero-title display-4 fw-bold mb-4" data-i18n="hero_title">
+                        Find Trusted <br>Home & Office Staff
+                    </h1>
+                    <p class="hero-subtitle lead mb-4" data-i18n="hero_desc">
+                        Connect with verified, professional workers for your home or office. 
+                        Cleaners, Maids, Cooks, Nannies, Drivers and more.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#" class="btn btn-primary btn-lg" data-i18n="hero_find_btn">
+                            <i class="fas fa-search me-2"></i> Find Worker
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary btn-lg" data-i18n="hero_register_btn">
+                            <i class="fas fa-user-plus me-2"></i> Register as Worker
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://img.freepik.com/free-vector/hiring-concept-illustration_52683-37507.jpg" alt="Hero" class="img-fluid hero-img" style="max-height:400px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SEARCH SECTION -->
+    <!-- ========================================= -->
+    <section class="search-section py-4 bg-white shadow-sm">
+        <div class="container">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                    <label class="fw-semibold" data-i18n="search_service">Service</label>
+                    <select class="form-select" id="searchService">
+                        <option value="" data-i18n="all_categories">All Categories</option>
+                        <option value="cleaner">Cleaner</option>
+                        <option value="maid">Maid</option>
+                        <option value="cook">Cook</option>
+                        <option value="babysitter">Babysitter</option>
+                        <option value="driver">Driver</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="fw-semibold" data-i18n="search_city">City</label>
+                    <select class="form-select" id="searchCity">
+                        <option value="" data-i18n="all_cities">All Cities</option>
+                        <option value="karachi">Karachi</option>
+                        <option value="lahore">Lahore</option>
+                        <option value="islamabad">Islamabad</option>
+                        <option value="peshawar">Peshawar</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="fw-semibold" data-i18n="search_area">Area</label>
+                    <input type="text" class="form-control" placeholder="e.g. Gulshan" data-i18n-placeholder="search_area_placeholder">
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary w-100 py-2" data-i18n="search_btn">
+                        <i class="fas fa-search me-2"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- SERVICES SECTION -->
+    <!-- ========================================= -->
+    <section class="services-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold" data-i18n="services_title">Our Services</h2>
+                <p class="text-muted" data-i18n="services_subtitle">Professional staff for every need</p>
+            </div>
+            <div class="row g-4" id="servicesContainer">
+                <!-- JS se dynamically generate hoga -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- FEATURED WORKERS SECTION -->
+    <!-- ========================================= -->
+    <section class="workers-section py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold" data-i18n="workers_title">Featured & Verified Workers</h2>
+                <p class="text-muted" data-i18n="workers_subtitle">Trusted professionals ready to work</p>
+            </div>
+            <div class="row g-4" id="workersContainer">
+                <!-- JS se dynamically generate hoga -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- HOW IT WORKS -->
+    <!-- ========================================= -->
+    <section class="how-it-works py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold" data-i18n="how_title">How It Works</h2>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="step-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width:80px;height:80px;">
+                        <i class="fas fa-user-plus fa-2x"></i>
+                    </div>
+                    <h5 data-i18n="how_step1_title">1. Register</h5>
+                    <p data-i18n="how_step1_desc">Create your account as Employer or Worker.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width:80px;height:80px;">
+                        <i class="fas fa-search fa-2x"></i>
+                    </div>
+                    <h5 data-i18n="how_step2_title">2. Search / Apply</h5>
+                    <p data-i18n="how_step2_desc">Find workers or apply for jobs matching your skills.</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width:80px;height:80px;">
+                        <i class="fas fa-handshake fa-2x"></i>
+                    </div>
+                    <h5 data-i18n="how_step3_title">3. Hire & Work</h5>
+                    <p data-i18n="how_step3_desc">Connect, verify and start working together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- TESTIMONIALS -->
+    <!-- ========================================= -->
+    <section class="testimonials py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold" data-i18n="testimonial_title">What Our Users Say</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100">
+                        <p class="fst-italic">"Found a great maid within hours. The verification badge gave me peace of mind."</p>
+                        <div class="mt-2"><strong>— Ahmed R.</strong> <span class="text-muted">(Employer)</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100">
+                        <p class="fst-italic">"I registered in Urdu easily. Got hired by a nice family in just 2 days."</p>
+                        <div class="mt-2"><strong>— Fatima K.</strong> <span class="text-muted">(Worker)</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-4 shadow-sm h-100">
+                        <p class="fst-italic">"The platform is very professional and easy to use. Highly recommended."</p>
+                        <div class="mt-2"><strong>— Usman S.</strong> <span class="text-muted">(Employer)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- FAQ -->
+    <!-- ========================================= -->
+    <section class="faq-section py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title fw-bold" data-i18n="faq_title">Frequently Asked Questions</h2>
+            </div>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            <span data-i18n="faq1_q">How do I verify a worker?</span>
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body" data-i18n="faq1_a">Admins review the worker's documents and identity. Verified profiles get a ✓ badge.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            <span data-i18n="faq2_q">Can I register in Urdu?</span>
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body" data-i18n="faq2_a">Yes! The platform fully supports Urdu and Pashto with RTL layout for complete accessibility.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            <span data-i18n="faq3_q">Is this service free for workers?</span>
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body" data-i18n="faq3_a">Yes, workers can register and apply for jobs completely free of cost.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================= -->
+    <!-- FOOTER -->
+    <!-- ========================================= -->
+    <footer class="footer bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="fw-bold"><i class="fas fa-hands-helping me-2 text-primary"></i> <span data-i18n="brand">Staffing Platform</span></h5>
+                    <p data-i18n="footer_desc">Your trusted partner for home and office staffing solutions.</p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h6 data-i18n="footer_quick">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none" data-i18n="nav_about">About</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none" data-i18n="nav_services">Services</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 data-i18n="footer_services">Services</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white-50 text-decoration-none">Cleaner</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Maid</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Cook</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none">Driver</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 data-i18n="footer_contact">Contact</h6>
+                    <ul class="list-unstyled text-white-50">
+                        <li><i class="fas fa-phone me-2"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@staffing.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4">
+            <p class="text-center text-white-50 small mb-0" data-i18n="copyright">© 2026 Staffing Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ====== Bootstrap JS ====== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- ====== Translation Data ====== -->
+    <script src="js/i18n/translations.js"></script>
+    <!-- ====== Main App JS ====== -->
+    <script src="js/app.js"></script>
+</body>
+</html>
