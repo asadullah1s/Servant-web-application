@@ -1,1 +1,68 @@
+<!-- MAIN CONTENT FOR find-workers.html -->
+<section class="find-workers py-4">
+    <div class="container">
+        <h1 class="fw-bold text-center mb-4" data-i18n="nav_workers">Find Workers</h1>
 
+        <!-- Filters -->
+        <div class="card shadow-sm p-4 mb-4">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="fw-semibold" data-i18n="search_service">Service</label>
+                    <select class="form-select" id="filterService">
+                        <option value="">All Categories</option>
+                        <option value="Cleaner">Cleaner</option>
+                        <option value="Maid">Maid</option>
+                        <option value="Cook">Cook</option>
+                        <option value="Babysitter">Babysitter</option>
+                        <option value="Driver">Driver</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="fw-semibold" data-i18n="search_city">City</label>
+                    <select class="form-select" id="filterCity">
+                        <option value="">All Cities</option>
+                        <option value="Karachi">Karachi</option>
+                        <option value="Lahore">Lahore</option>
+                        <option value="Islamabad">Islamabad</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="fw-semibold" data-i18n="search_experience">Experience</label>
+                    <select class="form-select" id="filterExperience">
+                        <option value="">Any</option>
+                        <option value="1">1+ Year</option>
+                        <option value="3">3+ Years</option>
+                        <option value="5">5+ Years</option>
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button class="btn btn-primary w-100" id="applyFiltersBtn"><i class="fas fa-search me-2"></i> Search</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="row g-4" id="workersContainer">
+            <!-- JS se dynamic render hoga -->
+        </div>
+    </div>
+</section>
+
+<!-- اس صفحے کے لیے مخصوص JS (find-workers.js) -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Agar home.js renderWorkers use kar raha hai toh woh chalega
+        // Lekin hum filter functionality add kar sakte hain
+        const applyBtn = document.getElementById('applyFiltersBtn');
+        if (applyBtn) {
+            applyBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const service = document.getElementById('filterService').value;
+                const city = document.getElementById('filterCity').value;
+                const exp = document.getElementById('filterExperience').value;
+                alert(`[Demo Filter]\nService: ${service || 'Any'}\nCity: ${city || 'Any'}\nExperience: ${exp || 'Any'} years`);
+                // Baad mein yahan real filtering hogi
+            });
+        }
+    });
+</script>
