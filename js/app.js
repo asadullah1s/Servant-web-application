@@ -1,6 +1,6 @@
 // ============================================
 // APP.JS - MASTER CONTROLLER
-// Partials Load, Language Switch, RTL, Theme
+// Partials Load, Language Switch, RTL, Translation
 // ============================================
 
 // --- Global State ---
@@ -16,11 +16,7 @@ function applyLanguage(lang) {
     currentLang = lang;
     localStorage.setItem('app_lang', lang);
 
-    // Update label in navbar (if exists)
-    const langLabel = document.getElementById('current-lang-label');
-    if (langLabel) langLabel.textContent = lang.toUpperCase();
-
-    // --- RTL / LTR ---
+    // --- RTL / LTR Logic ---
     if (lang === 'ur' || lang === 'ps') {
         htmlTag.setAttribute('dir', 'rtl');
         htmlTag.setAttribute('lang', lang);
@@ -33,11 +29,16 @@ function applyLanguage(lang) {
         document.body.classList.remove('rtl-enabled');
     }
 
+    // --- Update Language Label in Navbar ---
+    const langLabel = document.getElementById('current-lang-label');
+    if (langLabel) langLabel.textContent = lang.toUpperCase();
+
     // --- Translate all elements with [data-i18n] ---
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         const translation = translations[lang]?.[key];
         if (translation) {
+            // Agar HTML tags ho (jaise <br>) toh innerHTML, warna textContent
             if (el.querySelector('br') || translation.includes('<br>') || translation.includes('<')) {
                 el.innerHTML = translation;
             } else {
@@ -57,19 +58,14 @@ function applyLanguage(lang) {
     document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
         item.classList.toggle('active', item.getAttribute('data-lang') === lang);
     });
-
-    // --- Optional: Update HTML dir for Bootstrap RTL ---
-    if (typeof bootstrap !== 'undefined') {
-        // Force reflow if needed
-    }
 }
 
 // ============================================
 // 2. LANGUAGE SWITCH LISTENERS
 // ============================================
 function initLanguageSwitch() {
+    // Navbar dropdown items
     document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
-        // Remove old listeners to avoid duplicates
         item.removeEventListener('click', handleLangClick);
         item.addEventListener('click', handleLangClick);
     });
@@ -85,7 +81,7 @@ function handleLangClick(e) {
     e.preventDefault();
     const lang = this.getAttribute('data-lang');
     applyLanguage(lang);
-    // Close dropdown if Bootstrap is available
+    // Close dropdown
     const dropdown = this.closest('.dropdown');
     if (dropdown && typeof bootstrap !== 'undefined') {
         const bsDropdown = bootstrap.Dropdown.getInstance(dropdown.querySelector('.dropdown-toggle'));
@@ -96,7 +92,7 @@ function handleLangClick(e) {
 function handleLangOptionClick(e) {
     const lang = this.getAttribute('data-lang');
     applyLanguage(lang);
-    // Close modal if open
+    // Close modal
     const modal = this.closest('.modal');
     if (modal && typeof bootstrap !== 'undefined') {
         const bsModal = bootstrap.Modal.getInstance(modal);
@@ -112,19 +108,19 @@ async function loadPartials() {
         // 1. Navbar
         const navbarContainer = document.getElementById('navbar-container');
         if (navbarContainer) {
-            const res = await fetch('partials/navbar.html');
+            const res = await fetch('/partials/navbar.html');
             if (res.ok) {
                 navbarContainer.innerHTML = await res.text();
             } else {
                 console.warn('Navbar partial not found, using fallback.');
-                navbarContainer.innerHTML = `<nav class="navbar navbar-expand-lg bg-light"><div class="container"><span class="navbar-brand">Staffing Platform</span></div></nav>`;
+                navbarContainer.innerHTML = `<nav class="navbar navbar-expand-lg bg-light p-3"><div class="container"><span class="navbar-brand">Staffing Platform</span></div></nav>`;
             }
         }
 
         // 2. Footer
         const footerContainer = document.getElementById('footer-container');
         if (footerContainer) {
-            const res = await fetch('partials/footer.html');
+            const res = await fetch('/partials/footer.html');
             if (res.ok) {
                 footerContainer.innerHTML = await res.text();
             } else {
@@ -136,7 +132,7 @@ async function loadPartials() {
         // 3. Modal (optional)
         const modalContainer = document.getElementById('modal-container');
         if (modalContainer) {
-            const res = await fetch('partials/language-modal.html');
+            const res = await fetch('/partials/language-modal.html');
             if (res.ok) {
                 modalContainer.innerHTML = await res.text();
             }
@@ -145,7 +141,7 @@ async function loadPartials() {
         // 4. Alerts (optional)
         const alertsContainer = document.getElementById('alerts-container');
         if (alertsContainer) {
-            const res = await fetch('partials/alert-messages.html');
+            const res = await fetch('/partials/alert-messages.html');
             if (res.ok) {
                 alertsContainer.innerHTML = await res.text();
             }
@@ -155,7 +151,7 @@ async function loadPartials() {
         applyLanguage(currentLang);
         initLanguageSwitch();
 
-        // --- Also, if any page-specific init needs to run after partials, trigger a custom event ---
+        // --- Trigger event for page-specific JS (home.js etc.) ---
         document.dispatchEvent(new Event('partialsLoaded'));
 
     } catch (error) {
@@ -167,31 +163,25 @@ async function loadPartials() {
 // 4. INITIALIZATION
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Load partials first (navbar/footer)
+    // Load partials (navbar/footer)
     loadPartials().then(() => {
-        // After partials are loaded, page-specific JS (like home.js) will handle rendering.
         console.log('✅ Partials loaded. App ready.');
     });
 
-    // If user clicks on a language link directly in static HTML (before partials load),
-    // we still need to handle it, but initLanguageSwitch will be called after partials load.
-    // However, for safety, we also attach listeners to any existing static elements.
+    // Attach listeners to any static language elements (if any)
     initLanguageSwitch();
 
-    // Auto-detect browser language (optional)
-    // const browserLang = navigator.language.split('-')[0];
-    // if (['ur', 'ps'].includes(browserLang)) {
-    //     applyLanguage(browserLang);
-    // }
+    // Note: Page-specific JS (home.js, auth.js, etc.) will handle their own rendering
+    // as they run independently after this file.
 });
 
 // ============================================
-// 5. GLOBAL TOAST HELPER (اگر pages/auth.js میں showToast نہ ملے)
+// 5. GLOBAL TOAST HELPER (for all pages)
 // ============================================
 window.showToast = function(message, type = 'success') {
     const toastEl = document.getElementById('liveToast');
     if (!toastEl) {
-        alert(message); // Fallback
+        alert(message); // Fallback if toast not found
         return;
     }
     const toastBody = document.getElementById('toastMessage');
@@ -210,7 +200,6 @@ window.showToast = function(message, type = 'success') {
         const toast = new bootstrap.Toast(toastEl);
         toast.show();
     } else {
-        // Simple fallback
         toastEl.style.display = 'block';
         setTimeout(() => { toastEl.style.display = 'none'; }, 3000);
     }
