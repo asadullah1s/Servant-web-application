@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employer Dashboard - Staffing Platform</title>
+    <title>Admin Dashboard - Staffing Platform</title>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -19,65 +19,71 @@
     <div id="navbar-container"></div>
 
     <!-- Main Content -->
-    <main class="py-4" id="employerDashboard">
+    <main class="py-4" id="adminDashboard">
         <div class="container">
-            <h2 class="fw-bold mb-4">Employer Dashboard</h2>
+            <h2 class="fw-bold mb-4">Admin Dashboard</h2>
 
-            <!-- Stats Cards -->
+            <!-- Stats -->
             <div class="row g-4 mb-4">
                 <div class="col-md-3">
                     <div class="card p-3 shadow-sm text-center">
-                        <h4 class="text-primary" id="totalRequests">0</h4>
-                        <p class="text-muted small">Total Requests</p>
+                        <h4 class="text-primary" id="totalWorkers">0</h4>
+                        <p class="text-muted small">Total Workers</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card p-3 shadow-sm text-center">
-                        <h4 class="text-warning" id="pendingRequests">0</h4>
-                        <p class="text-muted small">Pending</p>
+                        <h4 class="text-success" id="verifiedWorkers">0</h4>
+                        <p class="text-muted small">Verified</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card p-3 shadow-sm text-center">
-                        <h4 class="text-success" id="acceptedWorkers">0</h4>
-                        <p class="text-muted small">Accepted / Completed</p>
+                        <h4 class="text-warning" id="pendingVerification">0</h4>
+                        <p class="text-muted small">Pending Verification</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card p-3 shadow-sm text-center">
-                        <h4 class="text-danger" id="favorites">0</h4>
-                        <p class="text-muted small">Favorites</p>
+                        <h4 class="text-info" id="totalEmployers">0</h4>
+                        <p class="text-muted small">Total Employers</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Recent Requests -->
-            <div class="card shadow-sm p-3 mb-4">
-                <h5 class="fw-bold mb-3">Recent Requests</h5>
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead>
-                            <tr>
-                                <th>Worker</th>
-                                <th>Service</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="recentRequestsTable">
-                            <!-- JS se dynamic render hoga -->
-                        </tbody>
-                    </table>
+            <!-- Additional Stats -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="card p-3 shadow-sm">
+                        <h6 class="fw-bold">Active Requests</h6>
+                        <h3 class="text-primary" id="activeRequests">0</h3>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-3 shadow-sm">
+                        <h6 class="fw-bold">Completed Hires</h6>
+                        <h3 class="text-success" id="completedHires">0</h3>
+                    </div>
                 </div>
             </div>
 
-            <!-- Favorites List -->
+            <!-- Quick Actions -->
             <div class="card shadow-sm p-3">
-                <h5 class="fw-bold mb-3">Favorite Workers</h5>
-                <ul class="list-group" id="favoritesList">
-                    <!-- JS se dynamic render hoga -->
-                </ul>
+                <h5 class="fw-bold mb-3">Quick Actions</h5>
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <a href="/pages/admin/manage-workers.html" class="btn btn-outline-primary w-100">Manage Workers</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/pages/admin/verifications.html" class="btn btn-outline-warning w-100">Verify Pending</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/pages/admin/manage-categories.html" class="btn btn-outline-info w-100">Categories</a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/pages/admin/reports.html" class="btn btn-outline-secondary w-100">View Reports</a>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -97,6 +103,6 @@
     <script src="/js/i18n/ps.js"></script>
     <script src="/js/i18n/translations.js"></script>
     <script src="/js/app.js"></script>
-    <script src="/js/pages/employer.js"></script>
+    <script src="/js/pages/admin.js"></script>
 </body>
 </html>
