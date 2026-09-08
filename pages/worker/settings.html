@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Worker - Staffing Platform</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Main Content -->
+    <main class="py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0 p-4">
+                        <h3 class="fw-bold mb-4">Account Settings</h3>
+                        <form id="workerSettingsForm">
+                            <h5 class="fw-bold">Change Password</h5>
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Current Password</label>
+                                <input type="password" class="form-control" placeholder="Enter current password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">New Password</label>
+                                <input type="password" class="form-control" placeholder="Min 8 chars" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Confirm New Password</label>
+                                <input type="password" class="form-control" placeholder="Re-enter new password" required>
+                            </div>
+                            <hr>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="notificationsWorker" checked>
+                                <label class="form-check-label" for="notificationsWorker">Receive Job Alerts via Email</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Save Settings</button>
+                        </form>
+                        <hr>
+                        <div class="d-grid">
+                            <button class="btn btn-outline-danger" id="logoutBtnWorker">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    <div id="alerts-container"></div>
+    <div id="modal-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/utils/helpers.js"></script>
+    <script src="/js/utils/storage.js"></script>
+    <script src="/js/utils/validators.js"></script>
+    <script src="/js/i18n/en.js"></script>
+    <script src="/js/i18n/ur.js"></script>
+    <script src="/js/i18n/ps.js"></script>
+    <script src="/js/i18n/translations.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/pages/worker.js"></script>
+    
+    <script>
+        document.getElementById('workerSettingsForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('Settings saved successfully! (Demo)', 'success');
+        });
+
+        document.getElementById('logoutBtnWorker')?.addEventListener('click', function() {
+            if (confirm('Are you sure you want to logout?')) {
+                alert('Logged out! (Demo)');
+                window.location.href = '/index.html';
+            }
+        });
+    </script>
+</body>
+</html>
