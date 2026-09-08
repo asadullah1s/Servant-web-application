@@ -14,18 +14,20 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/pages/public.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/rtl.css">
 </head>
 <body>
 
-    <!-- ====== NAVBAR CONTAINER (loaded via JS) ====== -->
+    <!-- Navbar -->
     <div id="navbar-container"></div>
 
     <!-- ========================================= -->
     <!-- MAIN CONTENT (Homepage) -->
     <!-- ========================================= -->
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero-section py-5">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -34,8 +36,7 @@
                         Find Trusted <br>Home & Office Staff
                     </h1>
                     <p class="hero-subtitle lead mb-4" data-i18n="hero_desc">
-                        Connect with verified, professional workers for your home or office. 
-                        Cleaners, Maids, Cooks, Nannies, Drivers and more.
+                        Connect with verified, professional workers for your home or office.
                     </p>
                     <div class="d-flex flex-wrap gap-3">
                         <a href="/pages/public/find-workers.html" class="btn btn-primary btn-lg" data-i18n="hero_find_btn">
@@ -53,7 +54,7 @@
         </div>
     </section>
 
-    <!-- SEARCH SECTION -->
+    <!-- SEARCH -->
     <section class="search-section py-4 bg-white shadow-sm">
         <div class="container">
             <div class="row g-3 align-items-end">
@@ -75,7 +76,6 @@
                         <option value="karachi">Karachi</option>
                         <option value="lahore">Lahore</option>
                         <option value="islamabad">Islamabad</option>
-                        <option value="peshawar">Peshawar</option>
                     </select>
                 </div>
                 <div class="col-md-3">
@@ -91,29 +91,25 @@
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
+    <!-- SERVICES -->
     <section class="services-section py-5">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title fw-bold" data-i18n="services_title">Our Services</h2>
                 <p class="text-muted" data-i18n="services_subtitle">Professional staff for every need</p>
             </div>
-            <div class="row g-4" id="servicesContainer">
-                <!-- JS (home.js) se dynamically generate hoga -->
-            </div>
+            <div class="row g-4" id="servicesContainer"></div>
         </div>
     </section>
 
-    <!-- FEATURED WORKERS SECTION -->
+    <!-- FEATURED WORKERS -->
     <section class="workers-section py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="section-title fw-bold" data-i18n="workers_title">Featured & Verified Workers</h2>
                 <p class="text-muted" data-i18n="workers_subtitle">Trusted professionals ready to work</p>
             </div>
-            <div class="row g-4" id="workersContainer">
-                <!-- JS (home.js) se dynamically generate hoga -->
-            </div>
+            <div class="row g-4" id="workersContainer"></div>
         </div>
     </section>
 
@@ -178,7 +174,7 @@
         </div>
     </section>
 
-    <!-- FAQ SECTION -->
+    <!-- FAQ -->
     <section class="faq-section py-5">
         <div class="container">
             <div class="text-center mb-5">
@@ -202,7 +198,7 @@
                         </button>
                     </h2>
                     <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body" data-i18n="faq2_a">Yes! The platform fully supports Urdu and Pashto with RTL layout for complete accessibility.</div>
+                        <div class="accordion-body" data-i18n="faq2_a">Yes! The platform fully supports Urdu and Pashto with RTL layout.</div>
                     </div>
                 </div>
                 <div class="accordion-item">
@@ -219,38 +215,31 @@
         </div>
     </section>
 
-    <!-- ====== FOOTER CONTAINER ====== -->
+    <!-- Footer -->
     <div id="footer-container"></div>
-
-    <!-- ====== ALERTS / MODALS CONTAINERS ====== -->
-    <div id="modal-container"></div>
     <div id="alerts-container"></div>
+    <div id="modal-container"></div>
 
     <!-- ========================================= -->
-    <!-- SCRIPTS (صحیح ترتیب - Very Important) -->
+    <!-- SCRIPTS - MODULE VERSION -->
     <!-- ========================================= -->
-    <!-- Bootstrap JS -->
+    
+    <!-- 1. Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Utilities -->
-    <script src="/js/utils/helpers.js"></script>
-    <script src="/js/utils/storage.js"></script>
-    <script src="/js/utils/validators.js"></script>
-
-    <!-- Translation Data (I18N) -->
+    <!-- 2. I18N (Non-module, they just define objects) -->
     <script src="/js/i18n/en.js"></script>
     <script src="/js/i18n/ur.js"></script>
     <script src="/js/i18n/ps.js"></script>
     <script src="/js/i18n/translations.js"></script>
 
-    <!-- Main App JS (RTL + Partials + Language) -->
-    <script src="/js/app.js"></script>
+    <!-- 3. Utilities (Non-module helpers) -->
+    <script src="/js/utils/helpers.js"></script>
+    <script src="/js/utils/storage.js"></script>
+    <script src="/js/utils/validators.js"></script>
 
-    <!-- Page Specific: Homepage (services + workers render) -->
-    <script src="/js/pages/home.js"></script>
-
-    <!-- Optional: Agar kisi aur page ki JS chahiye toh yahan add karein -->
-    <!-- <script src="/js/pages/auth.js"></script> -->
-
+    <!-- 4. MODULE SCRIPTS (use type="module") -->
+    <script type="module" src="/js/app.js"></script>
+    <script type="module" src="/js/pages/home.js"></script>
 </body>
 </html>
