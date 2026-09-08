@@ -1,35 +1,93 @@
 // ============================================
-// FIREBASE CONFIG
+// FIREBASE CONFIG - MODULE VERSION
 // ============================================
 
-// IMPORTANT: Apna config yahan paste karein
-// Jo Firebase Console se mila hai.
+// Import Firebase SDKs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import { 
+    getAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    updateProfile,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+import {
+    getFirestore,
+    collection,
+    doc,
+    setDoc,
+    getDoc,
+    getDocs,
+    query,
+    where,
+    updateDoc,
+    deleteDoc,
+    onSnapshot,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject,
+    listAll
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
+
+// Your Firebase Config (from console)
 const firebaseConfig = {
-    apiKey: "AIzaSyDummyKeyHere123456789",
-    authDomain: "your-project.firebaseapp.com",
-    projectId: "your-project-id",
-    storageBucket: "your-project.appspot.com",
-    messagingSenderId: "123456789",
-    appId: "1:123456789:web:abcdef123456"
+    apiKey: "AIzaSyBDwu0ajN3u_3vbzQ4Yom7-JFgRXgW3ImQ",
+    authDomain: "rent-a-servant.firebaseapp.com",
+    projectId: "rent-a-servant",
+    storageBucket: "rent-a-servant.firebasestorage.app",
+    messagingSenderId: "105118617152",
+    appId: "1:105118617152:web:23871656054820f1bed9a5",
+    measurementId: "G-9JTN3K15XF"
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // Initialize Services
-const auth = firebase.auth();
-const db = firebase.firestore();
-const storage = firebase.storage();
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
 
-// (Optional) Enable offline persistence for Firestore
-db.enablePersistence()
-    .catch((err) => {
-        console.warn('Firestore persistence error:', err);
-    });
+// Export for use in other files
+export { 
+    app, 
+    auth, 
+    db, 
+    storage,
+    // Auth functions
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    updateProfile,
+    onAuthStateChanged,
+    signOut,
+    // Firestore functions
+    collection,
+    doc,
+    setDoc,
+    getDoc,
+    getDocs,
+    query,
+    where,
+    updateDoc,
+    deleteDoc,
+    onSnapshot,
+    addDoc,
+    serverTimestamp,
+    // Storage functions
+    ref,
+    uploadBytes,
+    getDownloadURL,
+    deleteObject,
+    listAll
+};
 
-// Make them globally accessible
-window.auth = auth;
-window.db = db;
-window.storage = storage;
-
-console.log('🔥 Firebase initialized successfully!');
+console.log('🔥 Firebase initialized successfully! (Module)');
