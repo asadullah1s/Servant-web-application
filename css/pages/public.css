@@ -1,0 +1,252 @@
+/* ============================================
+   PUBLIC PAGES SPECIFIC (pages/public/*.html)
+   ============================================ */
+
+/* ----- WORKER DETAILS PAGE ----- */
+.worker-profile-avatar {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #e9ecef;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+.worker-details .verified-badge {
+    background: #10b981;
+    color: white;
+    font-size: 0.85rem;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+.worker-details .skill-badge {
+    background: #eef2ff;
+    color: var(--primary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+.worker-details .list-group-item {
+    border-left: 3px solid var(--primary);
+    margin-bottom: 4px;
+    border-radius: 4px;
+}
+.worker-details .hire-btn {
+    padding: 12px;
+    font-weight: 700;
+    border-radius: var(--border-radius);
+}
+
+/* ----- FIND WORKERS PAGE ----- */
+.filter-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f1f5f9;
+}
+.filter-card label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #64748b;
+    font-weight: 600;
+}
+.filter-card .form-select,
+.filter-card .form-control {
+    border-radius: var(--border-radius);
+    border: 1px solid #e2e8f0;
+    padding: 10px 14px;
+}
+
+/* ----- SAFETY & VERIFICATION PAGE ----- */
+.safety-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f1f5f9;
+    transition: all var(--transition-speed) ease;
+    height: 100%;
+}
+.safety-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+    border-color: var(--primary);
+}
+.safety-card .safety-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(13, 110, 253, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 2rem;
+    color: var(--primary);
+}
+.safety-card h5 {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.safety-card p {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ----- HOW IT WORKS PAGE ----- */
+.how-step-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f1f5f9;
+    height: 100%;
+    transition: all var(--transition-speed) ease;
+}
+.how-step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+}
+.how-step-card .step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+}
+.how-step-card h4 {
+    font-weight: 700;
+}
+.how-step-card p {
+    color: #64748b;
+}
+
+/* ----- ABOUT PAGE ----- */
+.about-stats .stat-number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+.about-stats .stat-label {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 500;
+}
+.about-img {
+    max-height: 350px;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* ----- CONTACT PAGE ----- */
+.contact-info-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f1f5f9;
+    height: 100%;
+}
+.contact-info-card .contact-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(13, 110, 253, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+.contact-info-card h6 {
+    font-weight: 700;
+}
+.contact-info-card p {
+    color: #64748b;
+    margin: 0;
+}
+
+/* ----- SERVICES PAGE (Extra) ----- */
+.service-page-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 32px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f1f5f9;
+    transition: all var(--transition-speed) ease;
+    height: 100%;
+}
+.service-page-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+    border-color: var(--primary);
+}
+.service-page-card i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+.service-page-card h5 {
+    font-weight: 700;
+}
+.service-page-card p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* ----- FAQ PAGE (Extra) ----- */
+.faq-page .accordion-button {
+    padding: 16px 20px;
+    font-weight: 600;
+}
+.faq-page .accordion-body {
+    padding: 16px 20px;
+    color: #475569;
+}
+
+/* ----- RESPONSIVE OVERRIDES FOR PUBLIC PAGES ----- */
+@media (max-width: 768px) {
+    .worker-profile-avatar {
+        width: 150px;
+        height: 150px;
+    }
+    .about-stats .stat-number {
+        font-size: 2rem;
+    }
+    .safety-card {
+        padding: 20px 16px;
+    }
+    .how-step-card {
+        padding: 20px 16px;
+    }
+    .contact-info-card {
+        padding: 16px;
+    }
+    .service-page-card {
+        padding: 20px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .worker-profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+    .about-stats .stat-number {
+        font-size: 1.6rem;
+    }
+}
