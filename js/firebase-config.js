@@ -1,9 +1,9 @@
 // ============================================
-// FIREBASE CONFIG - MODULE VERSION
+// FIREBASE CONFIG - MODULE VERSION (FIXED)
 // ============================================
 
-// Import Firebase SDKs
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+// Firebase SDKs (Latest stable version)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { 
     getAuth, 
     createUserWithEmailAndPassword, 
@@ -12,7 +12,7 @@ import {
     updateProfile,
     onAuthStateChanged,
     signOut
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {
     getFirestore,
     collection,
@@ -27,7 +27,7 @@ import {
     onSnapshot,
     addDoc,
     serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import {
     getStorage,
     ref,
@@ -35,9 +35,9 @@ import {
     getDownloadURL,
     deleteObject,
     listAll
-} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-storage.js";
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
-// Your Firebase Config (from console)
+// Your Firebase Config
 const firebaseConfig = {
     apiKey: "AIzaSyBDwu0ajN3u_3vbzQ4Yom7-JFgRXgW3ImQ",
     authDomain: "rent-a-servant.firebaseapp.com",
@@ -56,7 +56,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// Export for use in other files
+// Export everything
 export { 
     app, 
     auth, 
@@ -90,4 +90,4 @@ export {
     listAll
 };
 
-console.log('🔥 Firebase initialized successfully! (Module)');
+console.log('🔥 Firebase initialized successfully!');
