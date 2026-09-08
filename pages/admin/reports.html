@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Admin - Staffing Platform</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Main Content -->
+    <main class="py-4">
+        <div class="container">
+            <h3 class="fw-bold mb-4">Platform Reports</h3>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-3">
+                        <h5 class="fw-bold">Total Workers</h5>
+                        <h2 class="text-primary" id="totalWorkers">0</h2>
+                        <p class="text-muted small">Across all categories</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-3">
+                        <h5 class="fw-bold">Total Employers</h5>
+                        <h2 class="text-info" id="totalEmployers">0</h2>
+                        <p class="text-muted small">Active employers</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-3">
+                        <h5 class="fw-bold">Completed Hires</h5>
+                        <h2 class="text-success" id="completedHires">0</h2>
+                        <p class="text-muted small">Successful connections</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm p-3">
+                        <h5 class="fw-bold">Verification Rate</h5>
+                        <h2 class="text-warning">68%</h2>
+                        <p class="text-muted small">Workers verified out of total</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-sm p-3 mt-4">
+                <h5 class="fw-bold">Activity Log (Demo)</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">✅ Worker "Fatima Noor" verified by Admin</li>
+                    <li class="list-group-item">📝 New Employer "Ali Raza" registered</li>
+                    <li class="list-group-item">📩 Hiring request sent for "Cook"</li>
+                    <li class="list-group-item">✅ 3 new workers added this week</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    <div id="alerts-container"></div>
+    <div id="modal-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/utils/helpers.js"></script>
+    <script src="/js/utils/storage.js"></script>
+    <script src="/js/utils/validators.js"></script>
+    <script src="/js/i18n/en.js"></script>
+    <script src="/js/i18n/ur.js"></script>
+    <script src="/js/i18n/ps.js"></script>
+    <script src="/js/i18n/translations.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/pages/admin.js"></script>
+</body>
+</html>
