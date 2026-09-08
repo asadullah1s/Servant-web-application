@@ -1,1 +1,199 @@
+/* ============================================
+   COMPONENTS (components.css)
+   Cards, Buttons, Steps, Tables, Toast, Badges
+   ============================================ */
 
+/* ----- Service Cards ----- */
+.service-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f1f5f9;
+    transition: all var(--transition-speed) ease;
+    cursor: default;
+}
+.service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+    border-color: var(--primary);
+}
+.service-card i {
+    font-size: 2.8rem;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+.service-card h5 {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+.service-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ----- Worker Cards ----- */
+.worker-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #f1f5f9;
+    transition: all var(--transition-speed) ease;
+}
+.worker-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+}
+.worker-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e9ecef;
+    margin-bottom: 10px;
+}
+.worker-card .verified-badge {
+    background: #10b981;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+}
+.worker-card h6 {
+    font-weight: 700;
+    margin-top: 8px;
+}
+.worker-card .rating {
+    color: #f59e0b;
+    font-size: 0.85rem;
+}
+.worker-card .price {
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 6px;
+}
+
+/* ----- Step Progress (Multi-Step Forms) ----- */
+.step-progress {
+    background-color: #e9ecef;
+    border-radius: 50px;
+    height: 8px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.step-progress .progress-bar {
+    background-color: var(--primary);
+    transition: width 0.4s ease;
+    height: 100%;
+    border-radius: 50px;
+}
+.step-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+.step-content.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.step-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.step-indicators .step-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #dee2e6;
+    border: none;
+    transition: 0.3s;
+}
+.step-indicators .step-dot.active {
+    background: var(--primary);
+    transform: scale(1.3);
+}
+.step-indicators .step-dot.completed {
+    background: #10b981;
+}
+
+/* ----- How It Works Steps ----- */
+.step-icon {
+    font-size: 1.8rem;
+}
+.how-it-works h5 {
+    font-weight: 700;
+    margin-top: 12px;
+}
+.how-it-works p {
+    color: #64748b;
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+/* ----- Testimonials ----- */
+.testimonials .card {
+    border-radius: var(--border-radius);
+    border: none;
+    transition: 0.2s;
+}
+.testimonials .card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08) !important;
+}
+
+/* ----- FAQ Accordion ----- */
+.accordion-button {
+    font-weight: 600;
+}
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--primary);
+}
+.accordion-item {
+    border: 1px solid #e9ecef;
+    border-radius: var(--border-radius) !important;
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+
+/* ----- Admin Tables ----- */
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.04);
+}
+.table .badge {
+    font-size: 0.8rem;
+    padding: 4px 12px;
+}
+
+/* ----- Toast (Alert Messages) ----- */
+#liveToast {
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    min-width: 250px;
+}
+.toast-body {
+    font-weight: 500;
+}
+
+/* ----- Utility Classes ----- */
+.text-primary-dark {
+    color: var(--primary-dark);
+}
+.bg-soft-primary {
+    background-color: rgba(13, 110, 253, 0.08);
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.transition-all {
+    transition: all 0.3s ease;
+}
