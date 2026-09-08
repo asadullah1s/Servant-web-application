@@ -1,1 +1,105 @@
+/* ============================================
+   RESPONSIVE (responsive.css)
+   Mobile, Tablet, Laptop, Desktop
+   ============================================ */
 
+/* ----- Tablets & Small Laptops (max-width: 992px) ----- */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.4rem;
+    }
+    .hero-img {
+        max-width: 350px;
+    }
+}
+
+/* ----- Mobile Phones (max-width: 768px) ----- */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .section-title {
+        font-size: 1.7rem;
+    }
+    .hero-section {
+        padding: 30px 0;
+        text-align: center;
+    }
+    .hero-img {
+        max-width: 280px;
+        margin-top: 20px;
+    }
+    .search-section .btn {
+        margin-top: 4px;
+    }
+    .navbar .btn {
+        font-size: 0.8rem;
+        padding: 4px 12px;
+    }
+    .navbar .nav-link {
+        padding: 6px 12px !important;
+    }
+    .step-indicators {
+        gap: 6px;
+    }
+    .step-indicators .step-dot {
+        width: 10px;
+        height: 10px;
+    }
+    .worker-card img {
+        width: 60px;
+        height: 60px;
+    }
+    .service-card {
+        padding: 20px 12px;
+    }
+    .service-card i {
+        font-size: 2rem;
+    }
+    .footer .row {
+        text-align: center;
+    }
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* ----- Very Small Phones (max-width: 480px) ----- */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .hero-section .btn {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+    .hero-img {
+        max-width: 200px;
+    }
+    .section-title {
+        font-size: 1.4rem;
+    }
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .card.p-4 {
+        padding: 1.5rem !important;
+    }
+    .worker-card {
+        padding: 14px;
+    }
+    .service-card {
+        padding: 16px 10px;
+    }
+    .step-icon {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    .step-icon i {
+        font-size: 1.5rem !important;
+    }
+}
