@@ -1,46 +1,89 @@
-<!-- MAIN CONTENT FOR worker-details.html -->
-<section class="worker-details py-4">
-    <div class="container">
-        <div class="row g-4">
-            <!-- Profile Left -->
-            <div class="col-md-4 text-center">
-                <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Worker" class="img-fluid rounded-circle shadow-sm" style="width:200px;height:200px;object-fit:cover;">
-                <h3 class="mt-3">Fatima Noor</h3>
-                <span class="verified-badge"><i class="fas fa-check-circle me-1"></i> Verified</span>
-                <p class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Karachi, Pakistan</p>
-                <div class="mt-3">
-                    <p><strong data-i18n="expected_salary">Expected Salary:</strong> PKR 25,000/month</p>
-                    <p><strong data-i18n="experience">Experience:</strong> 4 Years</p>
-                    <p><strong data-i18n="availability">Availability:</strong> <span class="badge bg-success">Available</span></p>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Details - Staffing Platform</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/pages/public.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/rtl.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- Main Content -->
+    <main class="py-4 worker-details">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Profile Left -->
+                <div class="col-md-4 text-center">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Worker" class="worker-profile-avatar">
+                    <h3 class="mt-3">Fatima Noor</h3>
+                    <span class="verified-badge"><i class="fas fa-check-circle me-1"></i> Verified</span>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt me-1"></i> Karachi, Pakistan</p>
+                    <div class="mt-3">
+                        <p><strong data-i18n="expected_salary">Expected Salary:</strong> PKR 25,000/month</p>
+                        <p><strong data-i18n="experience">Experience:</strong> 4 Years</p>
+                        <p><strong data-i18n="availability">Availability:</strong> <span class="badge bg-success">Available</span></p>
+                    </div>
+                    <button class="btn btn-primary btn-lg w-100 mt-3 hire-btn" data-i18n="hire_now">Hire Now</button>
+                    <button class="btn btn-outline-secondary w-100 mt-2"><i class="far fa-heart"></i> Add to Favorites</button>
                 </div>
-                <button class="btn btn-primary btn-lg w-100 mt-3" data-i18n="hire_now">Hire Now</button>
-                <button class="btn btn-outline-secondary w-100 mt-2"><i class="far fa-heart"></i> Add to Favorites</button>
-            </div>
 
-            <!-- Details Right -->
-            <div class="col-md-8">
-                <h5 data-i18n="about_worker">About Worker</h5>
-                <p>Experienced maid with excellent cleaning skills. Worked with 5 families in the last 4 years. Fluent in Urdu and basic English.</p>
-                
-                <h5 class="mt-4" data-i18n="skills">Skills</h5>
-                <div class="d-flex flex-wrap gap-2">
-                    <span class="badge bg-primary">Cleaning</span>
-                    <span class="badge bg-primary">Cooking</span>
-                    <span class="badge bg-primary">Child Care</span>
-                    <span class="badge bg-primary">Ironing</span>
+                <!-- Details Right -->
+                <div class="col-md-8">
+                    <h5 data-i18n="about_worker">About Worker</h5>
+                    <p>Experienced maid with excellent cleaning skills. Worked with 5 families in the last 4 years. Fluent in Urdu and basic English.</p>
+                    
+                    <h5 class="mt-4" data-i18n="skills">Skills</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="skill-badge">Cleaning</span>
+                        <span class="skill-badge">Cooking</span>
+                        <span class="skill-badge">Child Care</span>
+                        <span class="skill-badge">Ironing</span>
+                    </div>
+
+                    <h5 class="mt-4" data-i18n="work_history">Work History</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"><strong>Family A</strong> - Maid (2022-2024)</li>
+                        <li class="list-group-item"><strong>Family B</strong> - Cleaner (2020-2022)</li>
+                    </ul>
+
+                    <h5 class="mt-4" data-i18n="references">References</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item">Mr. Ahmed - +92 300 1234567</li>
+                    </ul>
                 </div>
-
-                <h5 class="mt-4" data-i18n="work_history">Work History</h5>
-                <ul class="list-group">
-                    <li class="list-group-item"><strong>Family A</strong> - Maid (2022-2024)</li>
-                    <li class="list-group-item"><strong>Family B</strong> - Cleaner (2020-2022)</li>
-                </ul>
-
-                <h5 class="mt-4" data-i18n="references">References</h5>
-                <ul class="list-group">
-                    <li class="list-group-item">Mr. Ahmed - +92 300 1234567</li>
-                </ul>
             </div>
         </div>
-    </div>
-</section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+    <div id="alerts-container"></div>
+    <div id="modal-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/utils/helpers.js"></script>
+    <script src="/js/utils/storage.js"></script>
+    <script src="/js/utils/validators.js"></script>
+    <script src="/js/i18n/en.js"></script>
+    <script src="/js/i18n/ur.js"></script>
+    <script src="/js/i18n/ps.js"></script>
+    <script src="/js/i18n/translations.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/pages/home.js"></script>
+</body>
+</html>
