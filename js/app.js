@@ -1,23 +1,21 @@
 // ============================================
-// APP.JS - MASTER CONTROLLER (Module Version)
-// Partials Load, Language Switch, RTL, Translation
+// APP.JS - MASTER CONTROLLER
 // ============================================
 
-// Import Firebase auth for logout functionality
-import { auth, signOut, onAuthStateChanged } from '/js/firebase-config.js';
+import { auth, onAuthStateChanged, signOut } from './firebase-config.js';
 
-// --- Global State ---
+// --- State ---
 let currentLang = localStorage.getItem('app_lang') || 'en';
 const htmlTag = document.documentElement;
 
 // ============================================
-// 1. APPLY LANGUAGE & RTL
+// 1. APPLY LANGUAGE
 // ============================================
-function applyLanguage(lang) {
+window.applyLanguage = function(lang) {
     currentLang = lang;
     localStorage.setItem('app_lang', lang);
 
-    // RTL / LTR
+    // RTL
     if (lang === 'ur' || lang === 'ps') {
         htmlTag.setAttribute('dir', 'rtl');
         htmlTag.setAttribute('lang', lang);
@@ -31,44 +29,43 @@ function applyLanguage(lang) {
     }
 
     // Update label
-    const langLabel = document.getElementById('current-lang-label');
-    if (langLabel) langLabel.textContent = lang.toUpperCase();
+    const label = document.getElementById('current-lang-label');
+    if (label) label.textContent = lang.toUpperCase();
 
     // Translate elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        const translation = translations[lang]?.[key];
-        if (translation) {
-            if (el.querySelector('br') || translation.includes('<br>') || translation.includes('<')) {
-                el.innerHTML = translation;
+        const trans = window.translations?.[lang]?.[key];
+        if (trans) {
+            if (trans.includes('<')) {
+                el.innerHTML = trans;
             } else {
-                el.textContent = translation;
+                el.textContent = trans;
             }
         }
     });
 
-    // Translate placeholders
+    // Placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
-        const translation = translations[lang]?.[key];
-        if (translation) el.placeholder = translation;
+        const trans = window.translations?.[lang]?.[key];
+        if (trans) el.placeholder = trans;
     });
 
-    // Update dropdown
+    // Dropdown active
     document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
         item.classList.toggle('active', item.getAttribute('data-lang') === lang);
     });
-}
+};
 
 // ============================================
-// 2. LANGUAGE SWITCH LISTENERS
+// 2. LANGUAGE SWITCH
 // ============================================
 function initLanguageSwitch() {
     document.querySelectorAll('.dropdown-item[data-lang]').forEach(item => {
         item.removeEventListener('click', handleLangClick);
         item.addEventListener('click', handleLangClick);
     });
-
     document.querySelectorAll('.lang-option').forEach(btn => {
         btn.removeEventListener('click', handleLangOptionClick);
         btn.addEventListener('click', handleLangOptionClick);
@@ -78,21 +75,21 @@ function initLanguageSwitch() {
 function handleLangClick(e) {
     e.preventDefault();
     const lang = this.getAttribute('data-lang');
-    applyLanguage(lang);
+    window.applyLanguage(lang);
     const dropdown = this.closest('.dropdown');
     if (dropdown && typeof bootstrap !== 'undefined') {
-        const bsDropdown = bootstrap.Dropdown.getInstance(dropdown.querySelector('.dropdown-toggle'));
-        if (bsDropdown) bsDropdown.hide();
+        const bs = bootstrap.Dropdown.getInstance(dropdown.querySelector('.dropdown-toggle'));
+        if (bs) bs.hide();
     }
 }
 
 function handleLangOptionClick(e) {
     const lang = this.getAttribute('data-lang');
-    applyLanguage(lang);
+    window.applyLanguage(lang);
     const modal = this.closest('.modal');
     if (modal && typeof bootstrap !== 'undefined') {
-        const bsModal = bootstrap.Modal.getInstance(modal);
-        if (bsModal) bsModal.hide();
+        const bs = bootstrap.Modal.getInstance(modal);
+        if (bs) bs.hide();
     }
 }
 
@@ -101,41 +98,41 @@ function handleLangOptionClick(e) {
 // ============================================
 async function loadPartials() {
     try {
-        const navbarContainer = document.getElementById('navbar-container');
-        if (navbarContainer) {
+        const navbar = document.getElementById('navbar-container');
+        if (navbar) {
             const res = await fetch('/partials/navbar.html');
-            if (res.ok) navbarContainer.innerHTML = await res.text();
+            if (res.ok) navbar.innerHTML = await res.text();
         }
 
-        const footerContainer = document.getElementById('footer-container');
-        if (footerContainer) {
+        const footer = document.getElementById('footer-container');
+        if (footer) {
             const res = await fetch('/partials/footer.html');
-            if (res.ok) footerContainer.innerHTML = await res.text();
+            if (res.ok) footer.innerHTML = await res.text();
         }
 
-        const modalContainer = document.getElementById('modal-container');
-        if (modalContainer) {
+        const modal = document.getElementById('modal-container');
+        if (modal) {
             const res = await fetch('/partials/language-modal.html');
-            if (res.ok) modalContainer.innerHTML = await res.text();
+            if (res.ok) modal.innerHTML = await res.text();
         }
 
-        const alertsContainer = document.getElementById('alerts-container');
-        if (alertsContainer) {
+        const alerts = document.getElementById('alerts-container');
+        if (alerts) {
             const res = await fetch('/partials/alert-messages.html');
-            if (res.ok) alertsContainer.innerHTML = await res.text();
+            if (res.ok) alerts.innerHTML = await res.text();
         }
 
-        applyLanguage(currentLang);
+        window.applyLanguage(currentLang);
         initLanguageSwitch();
         document.dispatchEvent(new Event('partialsLoaded'));
 
     } catch (error) {
-        console.error('Error loading partials:', error);
+        console.error('Partial load error:', error);
     }
 }
 
 // ============================================
-// 4. GLOBAL SHOW TOAST
+// 4. TOAST
 // ============================================
 window.showToast = function(message, type = 'success') {
     const toastEl = document.getElementById('liveToast');
@@ -143,8 +140,8 @@ window.showToast = function(message, type = 'success') {
         alert(message);
         return;
     }
-    const toastBody = document.getElementById('toastMessage');
-    if (!toastBody) return;
+    const body = document.getElementById('toastMessage');
+    if (!body) return;
 
     const bgMap = {
         success: 'bg-success',
@@ -153,7 +150,7 @@ window.showToast = function(message, type = 'success') {
         info: 'bg-info text-dark'
     };
     toastEl.className = `toast align-items-center text-white border-0 ${bgMap[type] || 'bg-success'}`;
-    toastBody.textContent = message;
+    body.textContent = message;
 
     if (typeof bootstrap !== 'undefined') {
         const toast = new bootstrap.Toast(toastEl);
@@ -165,7 +162,7 @@ window.showToast = function(message, type = 'success') {
 };
 
 // ============================================
-// 5. AUTH STATE - UPDATE NAVBAR
+// 5. AUTH NAVBAR
 // ============================================
 function updateNavbarAuth(user) {
     const loginBtn = document.querySelector('a[href="/pages/auth/login.html"]');
@@ -183,7 +180,7 @@ function updateNavbarAuth(user) {
                 e.preventDefault();
                 signOut(auth);
                 localStorage.removeItem('current_user');
-                window.showToast('Logged out successfully.', 'info');
+                window.showToast('Logged out.', 'info');
                 window.location.href = '/index.html';
             };
         }
@@ -204,8 +201,6 @@ function updateNavbarAuth(user) {
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
     loadPartials();
-
-    // Firebase Auth State
     onAuthStateChanged(auth, (user) => {
         updateNavbarAuth(user);
         if (user) {
@@ -220,4 +215,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-console.log('✅ App.js (Module) loaded.');
+console.log('✅ App.js loaded!');
