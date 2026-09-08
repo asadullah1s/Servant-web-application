@@ -1,9 +1,9 @@
 // ============================================
-// FIREBASE CONFIG - MODULE VERSION (FIXED)
+// FIREBASE CONFIG - MODULE VERSION
 // ============================================
 
-// Firebase SDKs (Latest stable version)
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+// Firebase SDKs
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
 import { 
     getAuth, 
     createUserWithEmailAndPassword, 
@@ -12,7 +12,7 @@ import {
     updateProfile,
     onAuthStateChanged,
     signOut
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 import {
     getFirestore,
     collection,
@@ -27,7 +27,7 @@ import {
     onSnapshot,
     addDoc,
     serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 import {
     getStorage,
     ref,
@@ -35,9 +35,9 @@ import {
     getDownloadURL,
     deleteObject,
     listAll
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+} from "https://www.gstatic.com/firebasejs/11.0.0/firebase-storage.js";
 
-// Your Firebase Config
+// Firebase Config
 const firebaseConfig = {
     apiKey: "AIzaSyBDwu0ajN3u_3vbzQ4Yom7-JFgRXgW3ImQ",
     authDomain: "rent-a-servant.firebaseapp.com",
@@ -48,28 +48,24 @@ const firebaseConfig = {
     measurementId: "G-9JTN3K15XF"
 };
 
-// Initialize Firebase
+// Initialize
 const app = initializeApp(firebaseConfig);
-
-// Initialize Services
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-// Export everything
+// Export all
 export { 
     app, 
     auth, 
     db, 
     storage,
-    // Auth functions
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
     updateProfile,
     onAuthStateChanged,
     signOut,
-    // Firestore functions
     collection,
     doc,
     setDoc,
@@ -82,7 +78,6 @@ export {
     onSnapshot,
     addDoc,
     serverTimestamp,
-    // Storage functions
     ref,
     uploadBytes,
     getDownloadURL,
@@ -90,4 +85,4 @@ export {
     listAll
 };
 
-console.log('🔥 Firebase initialized successfully!');
+console.log('🔥 Firebase initialized!');
